@@ -4,40 +4,24 @@ using UnityEngine;
 public class Dragable : MonoBehaviour
 {
     public GameObject target;
-    private Vector3 mousePos;
-    private Vector3 offset;
-    private Vector3 resetPos;
-    private bool isFinish;
-
-    void Start()
-    {
-        resetPos = transform.position;
-    }
+    private Vector2 mousePos;
+    
     void Update()
     {
-        if (!isFinish)
-        {
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
-    private void OnMouseDown() 
-    {
-        offset = transform.position - mousePos;
-    }
+
     private void OnMouseDrag()
     {
-        transform.position = mousePos + offset;
+        transform.position = mousePos;
     }
+
     private void OnMouseUp()
     {
-        if(Math.Abs(transform.position.x - target.transform.position.x) < 0.5f && Math.Abs(transform.position.y - target.transform.position.y) < 0.5f)
+        if(Math.Abs(transform.position.x - target.transform.position.x) < 1f && Math.Abs(transform.position.y - target.transform.position.y) < 1f)
         {
             transform.position = target.transform.position;
-            isFinish = true;
-        }
-        else
-        {
-            transform.position = resetPos;
+            gameObject.SetActive(false);
         }
     }
 }
