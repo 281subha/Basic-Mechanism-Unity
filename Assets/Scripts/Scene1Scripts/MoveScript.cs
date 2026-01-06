@@ -42,6 +42,7 @@ public class MoveScript : MonoBehaviour
         }
         if(transform.position == ownPos)
         {
+            ChangeColor();
             targetPosition = bottomRight.position;
         }
     }
@@ -50,5 +51,12 @@ public class MoveScript : MonoBehaviour
     {
         Vector2 currentPosition = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * moveSpeed);
         transform.position = currentPosition;
+    }
+
+    private void ChangeColor()
+    {
+        // Material mat = gameObject.GetComponent<MeshRenderer>().material;
+        // mat.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+        gameObject.GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
     }
 }

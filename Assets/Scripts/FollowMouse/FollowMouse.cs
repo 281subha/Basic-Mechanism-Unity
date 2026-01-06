@@ -3,9 +3,9 @@ using UnityEngine;
 public class FollowMouse : MonoBehaviour
 {
     private Vector2 mousePos;
-    private float speed = 1f;
-    private float smoothTime = 1f;
-    private Vector2 velocity = Vector2.zero;
+    private float speed = 1.5f;
+    // private float smoothTime = 1f;
+    // private Vector2 velocity = Vector2.zero;
 
     void Update()
     {
