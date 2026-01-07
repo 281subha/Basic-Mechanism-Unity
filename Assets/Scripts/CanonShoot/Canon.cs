@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Canon : MonoBehaviour
@@ -11,13 +10,8 @@ public class Canon : MonoBehaviour
     private Vector2 mousePos;
     private Vector2 rotateDirection;
     public float speed = 5f;
-    private float bound = 10f;
-
-    void Start()
-    {
-        
-    }
-
+    // private float bound = 5f;
+    
     void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -38,10 +32,13 @@ public class Canon : MonoBehaviour
         ballRb = newBall.GetComponent<Rigidbody2D>();
         ballRb.AddForce(rotateDirection * speed, ForceMode2D.Impulse);
 
-        if(newBall.transform.position.x >= bound )
-        {
-            Debug.Log("destroy");
-            Destroy(newBall);
-        }
+        Destroy(newBall, 2f);
+        
+        // position bounding should be woritten in update method
+        // if(newBall.transform.position.x >= bound || newBall.transform.position.x <= -bound )
+        // {
+        //     Debug.Log("destroy");
+        //     Destroy(newBall);
+        // }
     }
 }
