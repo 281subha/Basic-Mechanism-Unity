@@ -20,7 +20,6 @@ public class MovementScript : MonoBehaviour
     private DIRECTIONS _setDirections;
  
  
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _setDirections = DIRECTIONS.NONE;
@@ -28,7 +27,6 @@ public class MovementScript : MonoBehaviour
         // left = rb.linearVelocity.
     }
  
-    // Update is called once per frame
     void Update()
     {
         SetDirections();
