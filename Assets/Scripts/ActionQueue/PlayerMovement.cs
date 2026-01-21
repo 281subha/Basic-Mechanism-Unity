@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public bool isTriggered = false;
 
+    // ***********This code is for changing direction by inputs.***************
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         if (isTriggered && writeIndex>readIndex)
         {
             Move();
+            // InvokeRepeating(nameof(Move), 0.5f, 0.5f);
             // StartCoroutine (Move());
         }
             

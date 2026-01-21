@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     public float speed;
     private Vector2 mousePos;
 
-    // Drag Shoot *******************
+    // *********** Drag Shoot *******************
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
         Invoke(nameof(StopMoving), 5f);
     }
 
-    // Tap shoot **************************
+    // ************ Tap shoot **************************
     // private void Start()
     // {
     //     rb = gameObject.GetComponent<Rigidbody2D>();

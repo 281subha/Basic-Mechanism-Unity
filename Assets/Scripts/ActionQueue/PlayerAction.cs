@@ -4,17 +4,15 @@ public class PlayerAction : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Vector2 dir;
-    // private Vector2[] inputBuffer;
-    // private int writeIndex = 0;
-    // private int readIndex = 0;
     public float speed = 5f;
     public bool isTriggered = false;
     public bool isOuterInput = false;
 
+    // **************This code is for changing color by clicking space button.********************
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // inputBuffer = new Vector2[20];
     }
 
     void Update()

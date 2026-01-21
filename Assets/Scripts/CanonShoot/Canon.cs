@@ -10,6 +10,7 @@ public class Canon : MonoBehaviour
     private Vector2 mousePos;
     private Vector2 rotateDirection;
     public float speed = 5f;
+    private bool isCannonClicked = false;
     // private float bound = 5f;
     
     void Update()
@@ -20,9 +21,13 @@ public class Canon : MonoBehaviour
         float clampedAngle = Mathf.Clamp(angle, 30, 150);
         pivot.rotation = Quaternion.Euler(0, 0, clampedAngle-90f);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && mousePos.y >= -3.5f)
         {
-            Fire();
+            if(!isCannonClicked)
+            {
+                Fire();
+            }
+            isCannonClicked = false;
         }
     }
 
@@ -30,7 +35,7 @@ public class Canon : MonoBehaviour
     {
         newBall = Instantiate(cannonBall, firepoint.position, cannonBall.transform.rotation);
         ballRb = newBall.GetComponent<Rigidbody2D>();
-        ballRb.AddForce(rotateDirection * speed, ForceMode2D.Impulse);
+        ballRb.AddForce(rotateDirection.normalized * speed , ForceMode2D.Impulse);
 
         Destroy(newBall, 2f);
         
@@ -40,5 +45,10 @@ public class Canon : MonoBehaviour
         //     Debug.Log("destroy");
         //     Destroy(newBall);
         // }
+    }
+
+    void OnMouseDown()
+    {
+        isCannonClicked = true;
     }
 }
